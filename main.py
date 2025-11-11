@@ -39,5 +39,13 @@ def add_reminder():
     Label(root, text="✅ Reminder Saved!", fg="green").pack()
 
 Button(root, text="Add Reminder", command=add_reminder).pack(pady=10)
+def view_reminders():
+    c.execute("SELECT * FROM reminders")
+    rows = c.fetchall()
+    for row in rows:
+        Label(root, text=f"{row[0]} - {row[1]} {row[2]}").pack()
+
+Button(root, text="View Reminders", command=view_reminders).pack(pady=10)
+
 
 root.mainloop()
